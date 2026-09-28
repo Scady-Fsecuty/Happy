@@ -1012,6 +1012,25 @@ html, body {
 /* ==================== GAME ==================== */
 .game-screen {
   background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%) !important;
+  transition: background 0.3s ease;
+}
+
+.game-screen.flash-green {
+  animation: flashGreen 0.5s ease;
+}
+
+.game-screen.flash-red {
+  animation: flashRed 0.5s ease;
+}
+
+@keyframes flashGreen {
+  0%, 100% { background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%); }
+  50% { background: linear-gradient(180deg, rgba(48,209,88,0.3) 0%, rgba(48,209,88,0.2) 100%); }
+}
+
+@keyframes flashRed {
+  0%, 100% { background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%); }
+  50% { background: linear-gradient(180deg, rgba(255,69,58,0.3) 0%, rgba(255,69,58,0.2) 100%); }
 }
 
 .game-header {
@@ -1082,64 +1101,91 @@ html, body {
 }
 
 .game-ready {
-  font-size: 48px;
-  font-weight: 700;
+  font-size: 52px;
+  font-weight: 800;
   color: #fff;
   margin-bottom: 24px;
-  animation: blink 1s ease-in-out infinite;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, rgba(108,92,231,0.3), rgba(0,206,201,0.3));
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  animation: blinkGlow 1s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(108,92,231,0.5);
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+@keyframes blinkGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(108,92,231,0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(108,92,231,0.6);
+  }
 }
 
 .game-wave-container {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-  height: 60px;
+  height: 80px;
   align-items: flex-end;
+  padding: 10px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
 }
 
 .game-wave {
   display: flex;
-  gap: 3px;
+  gap: 4px;
   align-items: flex-end;
   height: 100%;
 }
 
 .game-wave span {
-  width: 4px;
-  height: 10px;
+  width: 6px;
+  height: 8px;
   background: linear-gradient(180deg, #6C5CE7, #00CEC9);
-  border-radius: 2px;
-  animation: wave 0.6s ease-in-out infinite alternate;
+  border-radius: 3px;
+  animation: waveBeat 0.4s ease-in-out infinite alternate;
+  box-shadow: 0 0 10px rgba(108,92,231,0.5);
 }
 
+.game-wave span:nth-child(1) { animation-delay: 0.05s; }
 .game-wave span:nth-child(2) { animation-delay: 0.1s; }
-.game-wave span:nth-child(3) { animation-delay: 0.2s; }
-.game-wave span:nth-child(4) { animation-delay: 0.3s; }
-.game-wave span:nth-child(5) { animation-delay: 0.4s; }
-.game-wave span:nth-child(6) { animation-delay: 0.5s; }
-.game-wave span:nth-child(7) { animation-delay: 0.6s; }
-.game-wave span:nth-child(8) { animation-delay: 0.7s; }
-.game-wave span:nth-child(9) { animation-delay: 0.8s; }
-.game-wave span:nth-child(10) { animation-delay: 0.9s; }
-.game-wave span:nth-child(11) { animation-delay: 0.1s; }
-.game-wave span:nth-child(12) { animation-delay: 0.2s; }
-.game-wave span:nth-child(13) { animation-delay: 0.3s; }
-.game-wave span:nth-child(14) { animation-delay: 0.4s; }
-.game-wave span:nth-child(15) { animation-delay: 0.5s; }
-.game-wave span:nth-child(16) { animation-delay: 0.6s; }
-.game-wave span:nth-child(17) { animation-delay: 0.7s; }
-.game-wave span:nth-child(18) { animation-delay: 0.8s; }
-.game-wave span:nth-child(19) { animation-delay: 0.9s; }
-.game-wave span:nth-child(20) { animation-delay: 0.1s; }
+.game-wave span:nth-child(3) { animation-delay: 0.15s; }
+.game-wave span:nth-child(4) { animation-delay: 0.05s; }
+.game-wave span:nth-child(5) { animation-delay: 0.2s; }
+.game-wave span:nth-child(6) { animation-delay: 0.1s; }
+.game-wave span:nth-child(7) { animation-delay: 0.15s; }
+.game-wave span:nth-child(8) { animation-delay: 0.05s; }
+.game-wave span:nth-child(9) { animation-delay: 0.2s; }
+.game-wave span:nth-child(10) { animation-delay: 0.1s; }
+.game-wave span:nth-child(11) { animation-delay: 0.15s; }
+.game-wave span:nth-child(12) { animation-delay: 0.05s; }
+.game-wave span:nth-child(13) { animation-delay: 0.2s; }
+.game-wave span:nth-child(14) { animation-delay: 0.1s; }
+.game-wave span:nth-child(15) { animation-delay: 0.15s; }
+.game-wave span:nth-child(16) { animation-delay: 0.05s; }
+.game-wave span:nth-child(17) { animation-delay: 0.2s; }
+.game-wave span:nth-child(18) { animation-delay: 0.1s; }
+.game-wave span:nth-child(19) { animation-delay: 0.15s; }
+.game-wave span:nth-child(20) { animation-delay: 0.05s; }
 
-@keyframes wave {
-  0% { height: 8px; }
-  100% { height: 50px; }
+@keyframes waveBeat {
+  0% {
+    height: 8px;
+    opacity: 0.6;
+    transform: scaleY(1);
+  }
+  100% {
+    height: 60px;
+    opacity: 1;
+    transform: scaleY(1.2);
+  }
 }
 
 .game-wave.paused span {

@@ -731,6 +731,9 @@ function nextRound() {
     $('game-options').style.display = 'grid';
     $('game-wave').classList.remove('paused');
 
+    // Disable options during audio playback
+    container.querySelectorAll('.game-option').forEach(b => b.classList.add('disabled'));
+
     // Play audio
     playGameAudio();
 
@@ -748,16 +751,10 @@ function nextRound() {
       if (timeLeft <= 0) {
         clearInterval(gameTimerInterval);
         gameTimerInterval = null;
-        // Time's up - count as wrong
+        // Stop audio and enable options
         stopGameAudio();
         $('game-wave').classList.add('paused');
-        gameScore.wrong++;
-        updateScore();
-        markCorrectAnswer(container, gameCurrentTrack);
-        setTimeout(() => {
-          container.querySelectorAll('.game-option').forEach(b => b.classList.add('disabled'));
-          setTimeout(nextRound, 1500);
-        }, 500);
+        container.querySelectorAll('.game-option').forEach(b => b.classList.remove('disabled'));
       }
     }, 1000);
   }, 4000);
@@ -777,6 +774,11 @@ function handleGameAnswer(btn, opt) {
   if (isCorrect) {
     btn.classList.add('correct');
     gameScore.correct++;
+    // Flash green screen
+    $('app-game').classList.add('flash-green');
+    setTimeout(() => {
+      $('app-game').classList.remove('flash-green');
+    }, 500);
     // Проиграть 10 секунд из главного куплета
     playChorusAudio();
     // Остановить через 10 секунд
@@ -786,6 +788,11 @@ function handleGameAnswer(btn, opt) {
   } else {
     btn.classList.add('wrong');
     gameScore.wrong++;
+    // Flash red screen
+    $('app-game').classList.add('flash-red');
+    setTimeout(() => {
+      $('app-game').classList.remove('flash-red');
+    }, 500);
     markCorrectAnswer(container, gameCurrentTrack);
   }
 
