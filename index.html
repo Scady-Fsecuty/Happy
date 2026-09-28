@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000000">
+<title>iPhone 13</title>
+<link rel="stylesheet" href="/style.css">
+  <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+</head>
+<body>
+
+<div id="iphone-frame">
+  <div id="iphone-screen">
+
+    <!-- Notch / Dynamic Island -->
+    <div id="notch"><div class="notch-pill"></div></div>
+
+    <!-- Status Bar -->
+    <div id="status-bar">
+      <span id="status-time">9:41</span>
+      <div id="status-icons">
+        <svg class="status-signal" viewBox="0 0 18 12" width="18" height="12"><rect x="0" y="8" width="3" height="4" rx="1" fill="white"/><rect x="5" y="5" width="3" height="7" rx="1" fill="white"/><rect x="10" y="2" width="3" height="10" rx="1" fill="white"/><rect x="15" y="0" width="3" height="12" rx="1" fill="white"/></svg>
+        <svg class="status-wifi" viewBox="0 0 16 12" width="16" height="12"><path d="M8 9.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="white"/><path d="M8 6c1.7 0 3.2.7 4.3 1.8l1.4-1.4C12.2 4.9 10.2 4 8 4S3.8 4.9 2.3 6.4L3.7 7.8C4.8 6.7 6.3 6 8 6z" fill="white"/><path d="M8 2.5c2.7 0 5.1 1 7 2.8L16.4 4C14.1 1.8 11.2.5 8 .5S1.9 1.8-.4 4L1 5.3C2.9 3.5 5.3 2.5 8 2.5z" fill="white" transform="translate(-0.5 0)"/></svg>
+        <div class="status-battery"><div class="battery-fill"></div></div>
+      </div>
+    </div>
+
+    <!-- Home Indicator -->
+    <div id="home-indicator"></div>
+
+    <!-- ==================== LOCK SCREEN ==================== -->
+    <div id="lockscreen" class="screen active">
+      <div class="lockscreen-wallpaper"></div>
+      <div class="lockscreen-content">
+        <div id="lock-time">9:41</div>
+        <div id="lock-date">Понедельник, 27 сентября</div>
+      </div>
+      <div id="lock-notification" class="notification">
+        <div class="notif-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="#0088cc"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></div>
+        <div class="notif-body">
+          <div class="notif-app">Скорлупа</div>
+          <div class="notif-title">Telegram</div>
+          <div class="notif-text">Привет! Я сделал этот сайт для тебя в качестве подарка. Разблокируй айфон.</div>
+        </div>
+      </div>
+      <div class="lock-hint">Свайп вверх для разблокировки</div>
+      <div class="swipe-up-area" id="lock-swipe"></div>
+    </div>
+
+    <!-- ==================== PASSCODE SCREEN ==================== -->
+    <div id="passcode" class="screen">
+      <div class="passcode-bg"></div>
+      <div class="passcode-content">
+        <div id="passcode-hint">Так, стоп. Ты точно моя сестра? Введи особенную дату.</div>
+        <div id="passcode-dots" class="passcode-dots">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+        <div class="passcode-keypad">
+          <button class="key" data-num="1">1<span></span></button>
+          <button class="key" data-num="2">2<span>ABC</span></button>
+          <button class="key" data-num="3">3<span>DEF</span></button>
+          <button class="key" data-num="4">4<span>GHI</span></button>
+          <button class="key" data-num="5">5<span>JKL</span></button>
+          <button class="key" data-num="6">6<span>MNO</span></button>
+          <button class="key" data-num="7">7<span>PQRS</span></button>
+          <button class="key" data-num="8">8<span>TUV</span></button>
+          <button class="key" data-num="9">9<span>WXYZ</span></button>
+          <button class="key key-empty"></button>
+          <button class="key" data-num="0">0<span></span></button>
+          <button class="key key-back" id="key-back">⌫</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== HOME SCREEN ==================== -->
+    <div id="home" class="screen">
+      <div class="home-wallpaper"></div>
+      <div class="home-pages-container">
+        <div class="home-pages" id="home-pages">
+          <!-- Page 1 -->
+          <div class="home-page" data-page="0">
+            <div class="icon-grid">
+              <div class="app-icon" data-app="tiktok">
+                <div class="icon-bg icon-tiktok"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.73 2.89 2.89 0 012.31-4.61c.29 0 .57.04.84.13V9.4a6.33 6.33 0 00-1-.05A6.34 6.34 0 005 20.1a6.34 6.34 0 0010.86-4.43V8.69a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.12z"/></svg></div>
+                <span class="icon-label">TikTok</span>
+              </div>
+              <div class="app-icon" data-app="telegram">
+                <div class="icon-bg icon-telegram"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></div>
+                <span class="icon-label">Telegram</span>
+                <span class="badge" id="badge-telegram">1</span>
+              </div>
+              <div class="app-icon" data-app="appstore">
+                <div class="icon-bg icon-appstore"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.05 20.28c-.98 1.7-2.06 3.06-3.68 3.06-.72 0-1.2-.2-1.62-.42-.42-.22-.86-.42-1.58-.42-.72 0-1.16.2-1.58.42-.42.22-.9.42-1.62.42-1.62 0-2.7-1.36-3.68-3.06-1.02-1.76-1.48-3.54-1.48-5.2 0-2.9 1.9-4.56 3.78-4.56.7 0 1.3.24 1.84.46.44.18.82.34 1.16.34.32 0 .68-.14 1.1-.32.56-.24 1.2-.48 2.04-.48.78 0 1.5.3 2.14.76.34.24.64.54.9.88-1.4 1.06-1.82 3.18-.58 4.62.16.18.34.34.54.48l-.48.84z"/><path d="M12 7.5c0-1.36.98-2.96 2.36-3.54.02.12.02.24.02.36 0 1.5-1.12 2.7-2.38 3.18 0-.02 0-.04 0-.06z"/></svg></div>
+                <span class="icon-label">App Store</span>
+              </div>
+              <div class="app-icon" data-app="gallery">
+                <div class="icon-bg icon-gallery"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+                <span class="icon-label">Галерея</span>
+                <span class="badge" id="badge-gallery" style="display:none">1</span>
+              </div>
+              <div class="app-icon" data-app="facts">
+                <div class="icon-bg icon-facts"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12 2C7.58 2 4 5.58 4 10c0 2.03.76 3.87 2 5.28V20l3-1.5c.95.26 1.97.4 3 .4 4.42 0 8-3.58 8-8s-3.58-8-8-8zm1 12h-2v-2h2v2zm0-4h-2V6h2v4z"/></svg></div>
+                <span class="icon-label">20 фактов</span>
+              </div>
+              <div class="app-icon" data-app="game">
+                <div class="icon-bg icon-game"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM11 13H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
+                <span class="icon-label">Игра</span>
+                <span class="badge" id="badge-game" style="display:none">!</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 2 (empty for swipe) -->
+          <div class="home-page" data-page="1">
+            <div class="icon-grid">
+              <div class="app-icon" data-app="clock">
+                <div class="icon-bg icon-clock"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg></div>
+                <span class="icon-label">Часы</span>
+              </div>
+              <div class="app-icon" data-app="weather">
+                <div class="icon-bg icon-weather"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></div>
+                <span class="icon-label">Погода</span>
+              </div>
+              <div class="app-icon" data-app="notes">
+                <div class="icon-bg icon-notes"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+                <span class="icon-label">Заметки</span>
+              </div>
+              <div class="app-icon" data-app="calc">
+                <div class="icon-bg icon-calc"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M7 2h10c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H7c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm0 6v2h10V8H7zm0 4v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2zm-8 4v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2zm-8 4v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2z"/></svg></div>
+                <span class="icon-label">Калькулятор</span>
+              </div>
+              <div class="app-icon" data-app="settings">
+                <div class="icon-bg icon-settings"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></div>
+                <span class="icon-label">Настройки</span>
+              </div>
+              <div class="app-icon" data-app="music">
+                <div class="icon-bg icon-music"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
+                <span class="icon-label">Музыка</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page 3 (additional system apps) -->
+          <div class="home-page" data-page="2">
+            <div class="icon-grid">
+              <div class="app-icon" data-app="camera">
+                <div class="icon-bg icon-camera"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg></div>
+                <span class="icon-label">Камера</span>
+              </div>
+              <div class="app-icon" data-app="safari">
+                <div class="icon-bg icon-safari"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-6l5-3-3 5l-2-2z"/></svg></div>
+                <span class="icon-label">Safari</span>
+              </div>
+              <div class="app-icon" data-app="messages">
+                <div class="icon-bg icon-messages"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></div>
+                <span class="icon-label">Сообщения</span>
+              </div>
+              <div class="app-icon" data-app="phone">
+                <div class="icon-bg icon-phone"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+                <span class="icon-label">Телефон</span>
+              </div>
+              <div class="app-icon" data-app="calendar">
+                <div class="icon-bg icon-calendar"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg></div>
+                <span class="icon-label">Календарь</span>
+              </div>
+              <div class="app-icon" data-app="photos">
+                <div class="icon-bg icon-photos"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+                <span class="icon-label">Фото</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page dots -->
+      <div class="page-dots" id="page-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+
+      <!-- Dock -->
+      <div class="dock">
+        <div class="app-icon" data-app="phone">
+          <div class="icon-bg icon-phone"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+        </div>
+        <div class="app-icon" data-app="safari">
+          <div class="icon-bg icon-safari"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-6l5-3-3 5l-2-2z"/></svg></div>
+        </div>
+        <div class="app-icon" data-app="messages">
+          <div class="icon-bg icon-messages"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg></div>
+        </div>
+        <div class="app-icon" data-app="camera">
+          <div class="icon-bg icon-camera"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg></div>
+        </div>
+      </div>
+
+      <!-- Home message overlay -->
+      <div id="home-message" class="home-message"></div>
+    </div>
+
+    <!-- ==================== TELEGRAM APP ==================== -->
+    <div id="app-telegram" class="app-screen">
+      <div class="app-header tg-header">
+        <button class="app-back-btn" data-back>‹</button>
+        <div class="tg-chat-info">
+          <div class="tg-avatar">С</div>
+          <div>
+            <div class="tg-name">Скорлупа</div>
+            <div class="tg-status">в сети</div>
+          </div>
+        </div>
+      </div>
+      <div class="tg-chat" id="tg-chat"></div>
+      <div class="tg-input-area" id="tg-input-area"></div>
+      <div class="swipe-up-area swipe-up-close" id="tg-swipe"></div>
+    </div>
+
+    <!-- ==================== GALLERY APP ==================== -->
+    <div id="app-gallery" class="app-screen">
+      <div class="app-header gallery-header">
+        <span class="app-title">Галерея</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="gallery-slideshow" id="gallery-slideshow">
+        <div class="gallery-slide active"></div>
+        <div class="gallery-slide"></div>
+        <div class="gallery-slide"></div>
+        <div class="gallery-slide"></div>
+        <div class="gallery-slide"></div>
+        <div class="gallery-slide"></div>
+      </div>
+      <div class="gallery-progress" id="gallery-progress"><div class="gallery-progress-fill" id="gallery-progress-fill"></div></div>
+      <div class="swipe-up-area swipe-up-close" id="gallery-swipe"></div>
+    </div>
+
+    <!-- ==================== FACTS APP ==================== -->
+    <div id="app-facts" class="app-screen facts-screen">
+      <div class="app-header facts-header">
+        <span class="app-title">20 фактов о мире</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="facts-content" id="facts-content">
+        <p class="facts-question">Надеюсь, тебе интересно, как же водят макаки автомобиль?</p>
+        <div class="facts-buttons">
+          <button class="facts-btn" data-answer="yes1">Да</button>
+          <button class="facts-btn" data-answer="yes2">Да</button>
+        </div>
+      </div>
+      <div class="facts-video-container" id="facts-video-container">
+        <video id="facts-video" playsinline webkit-playsinline></video>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="facts-swipe"></div>
+    </div>
+
+    <!-- ==================== GAME APP ==================== -->
+    <div id="app-game" class="app-screen game-screen">
+      <div class="app-header game-header">
+        <span class="app-title">Угадай мелодию</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="game-content" id="game-content">
+        <div class="game-intro">
+          <h2>Угадай мелодию</h2>
+          <p>Послушай 5 секунд и выбери правильный ответ</p>
+          <button class="game-start-btn" id="game-start">Начать игру</button>
+        </div>
+        <div class="game-play" id="game-play" style="display:none">
+          <div class="game-score">
+            <span class="score-plus" id="score-plus">0</span>
+            <span class="score-divider">:</span>
+            <span class="score-minus" id="score-minus">0</span>
+          </div>
+          <div class="game-round" id="game-round">Раунд 1</div>
+          <div class="game-ready" id="game-ready" style="display:none">ГОТОВА??</div>
+          <div class="game-wave-container">
+            <div class="game-wave" id="game-wave">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="game-timer" id="game-timer">5</div>
+          <div class="game-options" id="game-options"></div>
+        </div>
+        <div class="game-result" id="game-result" style="display:none">
+          <h2 id="game-result-title">Игра окончена!</h2>
+          <p id="game-result-score"></p>
+          <div class="game-result-msg" id="game-result-msg"></div>
+          <button class="game-start-btn" id="game-restart">Играть снова</button>
+        </div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="game-swipe"></div>
+    </div>
+
+    <!-- ==================== TIKTOK APP (placeholder) ==================== -->
+    <div id="app-tiktok" class="app-screen tiktok-screen">
+      <div class="tiktok-content">
+        <div class="tiktok-placeholder">
+          <div class="tiktok-emoji">🎵</div>
+          <p>Тут пока пусто...</p>
+          <p class="tiktok-sub">Свайп вверх чтобы выйти</p>
+        </div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="tiktok-swipe"></div>
+    </div>
+
+    <!-- ==================== APP STORE (placeholder) ==================== -->
+    <div id="app-appstore" class="app-screen appstore-screen">
+      <div class="appstore-content">
+        <div class="appstore-placeholder">
+          <div class="appstore-emoji">🛍️</div>
+          <p>Магазин закрыт</p>
+          <p class="appstore-sub">Свайп вверх чтобы выйти</p>
+        </div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="appstore-swipe"></div>
+    </div>
+
+    <!-- ==================== CLOCK APP ==================== -->
+    <div id="app-clock" class="app-screen clock-screen">
+      <div class="app-header clock-header">
+        <span class="app-title">Часы</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="clock-content">
+        <div class="clock-time" id="clock-time">9:41</div>
+        <div class="clock-date" id="clock-date">Понедельник, 27 сентября</div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="clock-swipe"></div>
+    </div>
+
+    <!-- ==================== WEATHER APP ==================== -->
+    <div id="app-weather" class="app-screen weather-screen">
+      <div class="app-header weather-header">
+        <span class="app-title">Погода</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="weather-content">
+        <div class="weather-temp">+15°</div>
+        <div class="weather-desc">Облачно</div>
+        <div class="weather-location">Москва</div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="weather-swipe"></div>
+    </div>
+
+    <!-- ==================== NOTES APP ==================== -->
+    <div id="app-notes" class="app-screen notes-screen">
+      <div class="app-header notes-header">
+        <span class="app-title">Заметки</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="notes-content">
+        <div class="notes-empty">Нет заметок</div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="notes-swipe"></div>
+    </div>
+
+    <!-- ==================== CALCULATOR APP ==================== -->
+    <div id="app-calc" class="app-screen calc-screen">
+      <div class="app-header calc-header">
+        <span class="app-title">Калькулятор</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="calc-content">
+        <div class="calc-display" id="calc-display">0</div>
+        <div class="calc-buttons">
+          <button class="calc-btn" data-val="C">C</button>
+          <button class="calc-btn" data-val="±">±</button>
+          <button class="calc-btn" data-val="%">%</button>
+          <button class="calc-btn calc-op" data-val="/">÷</button>
+          <button class="calc-btn" data-val="7">7</button>
+          <button class="calc-btn" data-val="8">8</button>
+          <button class="calc-btn" data-val="9">9</button>
+          <button class="calc-btn calc-op" data-val="*">×</button>
+          <button class="calc-btn" data-val="4">4</button>
+          <button class="calc-btn" data-val="5">5</button>
+          <button class="calc-btn" data-val="6">6</button>
+          <button class="calc-btn calc-op" data-val="-">−</button>
+          <button class="calc-btn" data-val="1">1</button>
+          <button class="calc-btn" data-val="2">2</button>
+          <button class="calc-btn" data-val="3">3</button>
+          <button class="calc-btn calc-op" data-val="+">+</button>
+          <button class="calc-btn calc-zero" data-val="0">0</button>
+          <button class="calc-btn" data-val=".">.</button>
+          <button class="calc-btn calc-eq" data-val="=">=</button>
+        </div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="calc-swipe"></div>
+    </div>
+
+    <!-- ==================== SETTINGS APP ==================== -->
+    <div id="app-settings" class="app-screen settings-screen">
+      <div class="app-header settings-header">
+        <span class="app-title">Настройки</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="settings-content">
+        <div class="settings-item">
+          <span>Wi-Fi</span>
+          <span class="settings-value">Включено</span>
+        </div>
+        <div class="settings-item">
+          <span>Bluetooth</span>
+          <span class="settings-value">Выключено</span>
+        </div>
+        <div class="settings-item">
+          <span>Режим полёта</span>
+          <span class="settings-value">Выключено</span>
+        </div>
+        <div class="settings-item">
+          <span>Уведомления</span>
+          <span class="settings-value">Включено</span>
+        </div>
+        <div class="settings-item">
+          <span>Звуки</span>
+          <span class="settings-value">Включено</span>
+        </div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="settings-swipe"></div>
+    </div>
+
+    <!-- ==================== MUSIC APP ==================== -->
+    <div id="app-music" class="app-screen music-screen">
+      <div class="app-header music-header">
+        <span class="app-title">Музыка</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="music-content">
+        <div class="music-empty">Нет музыки</div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="music-swipe"></div>
+    </div>
+
+    <!-- ==================== CAMERA APP ==================== -->
+    <div id="app-camera" class="app-screen camera-screen">
+      <div class="camera-content">
+        <div class="camera-placeholder">
+          <div class="camera-icon">📷</div>
+          <p>Камера</p>
+        </div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="camera-swipe"></div>
+    </div>
+
+    <!-- ==================== SAFARI APP ==================== -->
+    <div id="app-safari" class="app-screen safari-screen">
+      <div class="app-header safari-header">
+        <span class="app-title">Safari</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="safari-content">
+        <div class="safari-placeholder">
+          <div class="safari-icon">🌐</div>
+          <p>Нет подключения</p>
+        </div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="safari-swipe"></div>
+    </div>
+
+    <!-- ==================== MESSAGES APP ==================== -->
+    <div id="app-messages" class="app-screen messages-screen">
+      <div class="app-header messages-header">
+        <span class="app-title">Сообщения</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="messages-content">
+        <div class="messages-empty">Нет сообщений</div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="messages-swipe"></div>
+    </div>
+
+    <!-- ==================== PHONE APP ==================== -->
+    <div id="app-phone" class="app-screen phone-screen">
+      <div class="app-header phone-header">
+        <span class="app-title">Телефон</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="phone-content">
+        <div class="phone-empty">Нет звонков</div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="phone-swipe"></div>
+    </div>
+
+    <!-- ==================== CALENDAR APP ==================== -->
+    <div id="app-calendar" class="app-screen calendar-screen">
+      <div class="app-header calendar-header">
+        <span class="app-title">Календарь</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="calendar-content">
+        <div class="calendar-empty">Нет событий</div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="calendar-swipe"></div>
+    </div>
+
+    <!-- ==================== PHOTOS APP ==================== -->
+    <div id="app-photos" class="app-screen photos-screen">
+      <div class="app-header photos-header">
+        <span class="app-title">Фото</span>
+        <button class="app-back-btn" data-back>‹</button>
+      </div>
+      <div class="photos-content">
+        <div class="photos-empty">Нет фотографий</div>
+      </div>
+      <div class="swipe-up-area swipe-up-close" id="photos-swipe"></div>
+    </div>
+
+  </div>
+</div>
+
+<audio id="bg-audio" preload="auto"></audio>
+<audio id="game-audio" preload="auto"></audio>
+<audio id="audio-notify" preload="auto" src="audio/telegram_notify.mp3"></audio>
+<audio id="audio-swipe" preload="auto" src="audio/swipe.mp3"></audio>
+<audio id="audio-open" preload="auto" src="audio/open.mp3"></audio>
+<audio id="audio-close" preload="auto" src="audio/close.mp3"></audio>
+
+<script type="module" src="/main.js"></script>
+</body>
+</html>
